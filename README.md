@@ -1,6 +1,5 @@
-# CSVConverter
-CSV to file convertor.
-Ce logiciel à pour seul but de convertir et décomposé un fichier CSV (peut importe le séparateur) en multiple fichier XML (un fichier par ligne) encodé en UTF-8.
+# XMLGenerator
+Ce logiciel à pour seul but de convertir et décomposé un fichier CSV (séparateur point virgule) en multiple fichier XML (un fichier par ligne) encodé en UTF-8.
 
 ## Step 1
 Afin d'installer le logiciel, il suffit de télécharger la dernière **release** et de le mettre dans un dossier crée spécialement pour son utilisation.

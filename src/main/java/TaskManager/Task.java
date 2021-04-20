@@ -1,10 +1,12 @@
 package TaskManager;
 
+import Visual.MainWindow;
 import XML.Filereader;
+
+import javax.swing.*;
 
 public class Task {
     private Thread thread;
-    private int progress;
     private Filereader fr;
     private boolean done;
 
@@ -19,12 +21,11 @@ public class Task {
 
     }
 
-    public Thread getThread() {
-        return thread;
-    }
+    private void taskTerminated() {
+        JOptionPane jop1;
+        jop1 = new JOptionPane();
+        jop1.showMessageDialog(null, "Generation complete ! " + this.getSize() + " files have been righted.", "Finish", JOptionPane.INFORMATION_MESSAGE);
 
-    public int getProgress() {
-        return progress;
     }
 
     public int getSize() {
@@ -33,7 +34,14 @@ public class Task {
 
     class Process implements Runnable {
         public void run() {
+            long time = System.currentTimeMillis();
             fr.rightFiles();
+            int remainingSec = (int) ((System.currentTimeMillis() - time) / 1000);
+            int timeInSec = (remainingSec % 60);
+            int timeInMin = (remainingSec % 3600) / 60;
+            MainWindow.log("Process terminated in " + timeInMin + "m" + timeInSec + "s" + " !");
+            taskTerminated();
         }
+
     }
 }

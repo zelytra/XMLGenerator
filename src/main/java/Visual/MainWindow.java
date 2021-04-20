@@ -14,7 +14,6 @@ public class MainWindow extends JFrame implements ActionListener {
 
     private JButton fileNavigator = new JButton("...");
     private JButton process = new JButton("Start process");
-    private JButton preview = new JButton("Preview");
     private JTextArea filePath = new JTextArea();
     private static JTextArea log = new JTextArea();
     private static JProgressBar bar = new JProgressBar();
@@ -41,15 +40,18 @@ public class MainWindow extends JFrame implements ActionListener {
         JPanel processBox = new JPanel();
         process.addActionListener(this);
         processBox.add(process);
-        processBox.add(preview);
         this.getContentPane().add(processBox, BorderLayout.CENTER);
 
         JPanel progressBox = new JPanel();
         progressBox.setLayout(new BoxLayout(progressBox, BoxLayout.PAGE_AXIS));
         log.setEditable(false);
+        JScrollPane scroll = new JScrollPane(log);
+        scroll.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+        log.setRows(10);
         progressBox.add(log);
         bar.setValue(0);
-        bar.setVisible(false);
+        bar.setStringPainted(true);
+        bar.setVisible(true);
         progressBox.add(bar);
         this.getContentPane().add(progressBox, BorderLayout.SOUTH);
         this.setVisible(true);
@@ -59,6 +61,7 @@ public class MainWindow extends JFrame implements ActionListener {
     @Override
     public void actionPerformed(ActionEvent e) {
         if (e.getSource() == fileNavigator) {
+
             JFileChooser jfc = new JFileChooser(FileSystemView.getFileSystemView().getHomeDirectory());
             jfc.setCurrentDirectory(new File(System.getProperty("user.dir")));
             int returnValue = jfc.showOpenDialog(null);
@@ -68,10 +71,14 @@ public class MainWindow extends JFrame implements ActionListener {
             }
         }
         if (e.getSource() == process) {
-            bar.setVisible(true);
-            this.task = new Task(this.filePath.getText());
-            bar.setMaximum( this.task.getSize());
-            task.run();
+            try {
+                bar.setVisible(true);
+                this.task = new Task(this.filePath.getText());
+                bar.setMaximum(this.task.getSize());
+                task.run();
+            } catch (Exception exception) {
+                noFileFound();
+            }
         }
     }
 
@@ -84,6 +91,15 @@ public class MainWindow extends JFrame implements ActionListener {
     public static void log(String msg) {
         log.setText(log.getText() + "\n" + msg);
     }
+
+    private void noFileFound() {
+        JOptionPane jop1;
+        jop1 = new JOptionPane();
+        jop1.showMessageDialog(null, "No file selected", "ERROR", JOptionPane.ERROR_MESSAGE);
+
+    }
+
+
 
 
 }
