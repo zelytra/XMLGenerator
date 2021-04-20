@@ -1,0 +1,4 @@
+Manifest-Version: 1.0
+Main-Class: XMLGenerator
+Class-Path: miglayout-swing.jar miglayout-core.jar
+
