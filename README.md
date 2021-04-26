@@ -5,27 +5,11 @@ Ce logiciel à pour seul but de convertir et décomposé un fichier CSV (sépara
 Afin d'installer le logiciel, il suffit de télécharger la dernière **release** et de le mettre dans un dossier crée spécialement pour son utilisation.
 
 ## Step 2
-Afin de l'éxécuter, déplacer votre CMD (Linux/Windows) dans le dossier ou se trouve le *.jar*. Puis éxécuter le logiciel avec cette commande :
-```java
-java -jar XMLGenerator.jar
-```
+Pour lancer le programme; il suffit de disposer sur son PC java 8/+ (version minimum de fonctionnement) et double cliquer desssus.
+
 
 ## Step 3
-Une fois éxécuter le logiciel vas venir détecter les fichier se trouvant au même endroit que lui.
-**IMPORTANT :** Toujours mettre les csv avec lesquelles vous travailler dans le même répertoire que le logiciel.
-```
-|------------JMSCreator------------|
-Detected file: JMSCreator.jar
-Detected file: Output
-Detected file: Part1.csv
-Detected file: Part2.csv
-Detected file: Part3.csv
-
-Please enter file path:
-```
-
-Il vous suffit d'écrire le nom du csv avec lequel le logiciel doit travailler et le programme se lancera :  
-```Part1.csv```  
+Une fois éxécuter le logiciel ouvrira une interface. Dans celle ci, vous deverez d'abord y indiquer le fichier avec lequel le logiciel doit travailler (**1**) puis appuyer sur le boutton *Start Process* qui lancera le traitement du fichier. 
 et le programme commencera le traitement :
 ```
 test0 has been created
@@ -42,4 +26,8 @@ test9 has been created
 ```
 
 ## Step 4
-Une fois l'éxécution terminé, un nouveau dossier sera apparu (si il n'est pas déja crée) sous le nom *Output* et contiendra tous les fichiers générés.
+Une fois l'éxécution terminé, un nouveau dossier sera apparu (s’il n'est pas déjà crée) sous le nom *Output* et contiendra tous les fichiers générés.
+Dans le cas ou un nouveau traitement doit être effectué, le logiciel doit être relancé par l'utilisateur.
+
+**WARNING**
+Dans le cas ou des fichiers son déja présent dans le dossier *Output* ils seront remplacés par le traitement le plus récent en cas de doublons et les anciens serons perdu.

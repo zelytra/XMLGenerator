@@ -5,7 +5,6 @@ import Visual.MainWindow;
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
-import java.nio.file.Path;
 import java.util.ArrayList;
 import java.util.Arrays;
 
@@ -17,7 +16,7 @@ public class Filereader {
     public Filereader(String path) {
         try {
             File file = new File(path);
-            this.br = Files.newBufferedReader(Path.of(file.getPath()), StandardCharsets.UTF_8);
+            this.br = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8);
             this.args = new ArrayList<>(Arrays.asList(br.readLine().split(";")));
             String line = br.readLine();
             xmlList = new ArrayList<>();
