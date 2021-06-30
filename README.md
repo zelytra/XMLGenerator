@@ -27,7 +27,6 @@ test9 has been created
 
 ## Step 4
 Une fois l'éxécution terminé, un nouveau dossier sera apparu (s’il n'est pas déjà crée) sous le nom *Output* et contiendra tous les fichiers générés.
-Dans le cas ou un nouveau traitement doit être effectué, le logiciel doit être relancé par l'utilisateur.
 
 **WARNING**
 Dans le cas ou des fichiers son déja présent dans le dossier *Output* ils seront remplacés par le traitement le plus récent en cas de doublons et les anciens serons perdu.
