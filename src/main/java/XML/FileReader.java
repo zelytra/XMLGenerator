@@ -1,19 +1,17 @@
 package XML;
 
-import Visual.MainWindow;
-
 import java.io.*;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.util.ArrayList;
 import java.util.Arrays;
 
-public class Filereader {
+public class FileReader {
     private BufferedReader br;
     private ArrayList<String> args;
     private ArrayList<XML> xmlList;
 
-    public Filereader(String path) {
+    public FileReader(String path) {
         try {
             File file = new File(path);
             this.br = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8);
@@ -36,7 +34,7 @@ public class Filereader {
         File folder = new File(currentDirFile + File.separator + "Output");
         if (!folder.exists()) {
             folder.mkdir();
-            MainWindow.log("Output folder created");
+            XMLGenerator.getFrameHandler().getMainFrame().log("Output folder created");
         }
 
         for (XML xml : xmlList) {
@@ -53,8 +51,8 @@ public class Filereader {
                 OutputStreamWriter writer = new OutputStreamWriter(new FileOutputStream(file), StandardCharsets.UTF_8);
                 writer.write(xml.getLine());
                 writer.close();
-                MainWindow.addProgress();
-                MainWindow.log(xml.getMRNumber() + " has been created");
+                XMLGenerator.getFrameHandler().getMainFrame().addProgress();
+                XMLGenerator.getFrameHandler().getMainFrame().log(xml.getMRNumber() + " has been created");
             } catch (IOException ioe) {
                 ioe.printStackTrace();
                 return;

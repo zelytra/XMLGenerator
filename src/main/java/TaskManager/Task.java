@@ -1,19 +1,19 @@
 package TaskManager;
 
-import Visual.MainWindow;
-import XML.Filereader;
+import XML.FileReader;
+import XML.XMLGenerator;
 
 import javax.swing.*;
 
+
 public class Task {
-    private Thread thread;
-    private Filereader fr;
-    private boolean done;
+
+    private final Thread thread;
+    private final FileReader fr;
 
     public Task(String path) {
         this.thread = new Thread(new Process());
-        this.fr = new Filereader(path);
-        this.done = false;
+        this.fr = new FileReader(path);
     }
 
     public void run() {
@@ -22,9 +22,7 @@ public class Task {
     }
 
     private void taskTerminated() {
-        JOptionPane jop1;
-        jop1 = new JOptionPane();
-        jop1.showMessageDialog(null, "Generation complete ! " + this.getSize() + " files have been righted.", "Finish", JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, "Generation complete ! " + this.getSize() + " files have been righted.", "Finish", JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -39,8 +37,9 @@ public class Task {
             int remainingSec = (int) ((System.currentTimeMillis() - time) / 1000);
             int timeInSec = (remainingSec % 60);
             int timeInMin = (remainingSec % 3600) / 60;
-            MainWindow.log("Process terminated in " + timeInMin + "m" + timeInSec + "s" + " !");
+            XMLGenerator.getFrameHandler().getMainFrame().log("Process terminated in " + timeInMin + "m" + timeInSec + "s" + " !");
             taskTerminated();
+            XMLGenerator.getFrameHandler().getMainFrame().resetFrame();
         }
 
     }
