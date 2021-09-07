@@ -16,8 +16,10 @@ public class FileReader {
             File file = new File(path);
             this.br = Files.newBufferedReader(file.toPath(), StandardCharsets.UTF_8);
             this.args = new ArrayList<>(Arrays.asList(br.readLine().split(";")));
+
             String line = br.readLine();
             xmlList = new ArrayList<>();
+
             while (line != null) {
                 xmlList.add(new XML(line,this.args));
                 line = br.readLine();
@@ -25,8 +27,8 @@ public class FileReader {
 
         } catch (IOException e) {
             System.out.println("Failed to read the file");
-        }
 
+        }
     }
 
     public void rightFiles() {

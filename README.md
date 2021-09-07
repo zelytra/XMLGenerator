@@ -1,5 +1,5 @@
-# XMLGenerator
-Ce logiciel à pour seul but de convertir et décomposé un fichier CSV (séparateur point virgule) en multiple fichier XML (un fichier par ligne) encodé en UTF-8.
+# XML.XMLGenerator
+Ce logiciel à pour seul but de convertir et décomposé un fichier **CSV** (séparateur point virgule) en multiple fichier XML (un fichier par ligne) encodé en UTF-8.
 
 ## Step 1
 Afin d'installer le logiciel, il suffit de télécharger la dernière **release** et de le mettre dans un dossier crée spécialement pour son utilisation.
@@ -24,6 +24,9 @@ test8 has been created
 test9 has been created
 ...
 ```
+
+**ATTENTION** :
+Dans le cas ou le fichier n'est pas reconnue un message d'erreur apparaitra. Un exmple du format du fichier attendu est fournis dans le ZIP. Il est très important de respecter le format du fichier autrement des erreurs peuvent apparaitre. Afin de vérifier si le fichier est correctement traité un bouton *Preview* permet de prégénéré un fichier traiter et ainsi vérifier l'intégrité de son traitement. 
 
 ## Step 4
 Une fois l'éxécution terminé, un nouveau dossier sera apparu (s’il n'est pas déjà crée) sous le nom *Output* et contiendra tous les fichiers générés.
